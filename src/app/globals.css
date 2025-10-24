@@ -24,3 +24,113 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Skip link visible on focus */
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+  background: var(--foreground);
+  color: var(--background);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  transform: translateY(-2.5rem);
+  transition: transform 120ms ease-in-out;
+  z-index: 9999;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Focus-visible outlines for keyboard users */
+:where(:root) :focus:not(:focus-visible) {
+  outline: none;
+}
+:where(:root) :focus-visible {
+  outline: 3px solid rgba(59,130,246,0.9);
+  outline-offset: 2px;
+}
+
+/* Small fade-in animation used by modal */
+.animate-fade-in {
+  animation: fadeIn 180ms ease-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Utility: subtle hover lift for cards */
+.card-hover:hover {
+  transform: translateY(-4px);
+}
+.card-hover {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+/* Page section layout similar to clean portfolio rhythm */
+html {
+  scroll-behavior: smooth;
+}
+
+.section {
+  padding: 6rem 1.5rem;
+}
+
+.hero {
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.section-alt {
+  background: rgba(0,0,0,0.03);
+}
+
+.container {
+  max-width: 64rem; /* 1024px */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Experience timeline */
+.timeline {
+  position: relative;
+  padding-left: 1.25rem;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(0,0,0,0.06);
+}
+.timeline-item {
+  position: relative;
+  padding: 1rem 0 1rem 1.25rem;
+}
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -0.25rem;
+  top: 1.15rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: var(--foreground);
+}
+
+/* Project card visual tweak */
+.project-card-accent {
+  border-left: 3px solid #111827; /* gray-900 */
+}
+
+@media (prefers-color-scheme: dark) {
+  .section-alt { background: rgba(255,255,255,0.02); }
+  .project-card-accent { border-left-color: #e5e7eb; }
+}

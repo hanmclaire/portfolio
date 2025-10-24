@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Nav from "../components/Nav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {/* Skip link for keyboard users */}
+        <a href="#main-content" className="skip-link absolute left-2 top-2 z-50 bg-foreground text-background px-3 py-1 rounded -translate-y-8 focus:translate-y-0 focus:outline-none">
+          Skip to content
+        </a>
+
+        <div className="min-h-screen flex flex-col">
+          <Nav />
+          <main id="main-content" className="flex-1">{children}</main>
+          <footer className="border-t">
+            <div className="max-w-4xl mx-auto px-6 py-6 text-sm text-center">
+              © {new Date().getFullYear()} Claire Han — Built with Next.js
+            </div>
+          </footer>
+        </div>
       </body>
     </html>
   );
