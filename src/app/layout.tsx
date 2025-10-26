@@ -36,9 +36,9 @@ export default function RootLayout({
         <div className="min-h-screen flex flex-col">
           <Nav />
           <main id="main-content" className="flex-1">{children}</main>
-          <footer className="border-t">
-            <div className="max-w-4xl mx-auto px-6 py-6 text-sm text-center">
-              © {new Date().getFullYear()} Claire Han — Built with Next.js
+          <footer>
+            <div className="max-w-4xl mx-auto px-6 py-6 text-sm text-center text-gray-400">
+              © {new Date().getFullYear()} Claire Han
             </div>
           </footer>
         </div>
